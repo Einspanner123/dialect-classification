@@ -44,7 +44,7 @@ def remove_blanks(wav, sr):
     # 修剪音频的结尾，使其具有窗口大小的倍数。使wav的长度能被 samples_per_window整除
     wav = wav[:len(wav) - (len(wav) % samples_per_window)]
 
-    # 浮点数波形转换为16位单声道PCM  *：接收到的参数会形成一个元组，**：接收到的参数会形成一个字典。如下代码。
+    # 浮点数波形转换为16位单声道PCM  *：接收到的参数会形成一个元组，**：接收到的参数会形成字典。如下代码。
     # webrtcvad 的 is_speech 接收的是buf 所以这里需要转换
     pcm_wave = struct.pack("%dh" % len(wav), *(np.round(wav * INT16_MAX)).astype(np.int16))
 
